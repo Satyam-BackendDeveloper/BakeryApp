@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+        {% for item in bakery_item %}
+            <h1> <div> Item : {{item.title}}</div> </h1>
+            <h3> Selling Price : {{item.selling_price}} Rs. </h3>
+            {% for x in ingredients %}
+                {% if x.bakery_item == item %}
+                <li>
+                    <div> {{x.ingredients}} : {{x.quantity}} Unit </div>
+                </li>
+                {% endif %}
+            {% endfor %}
+        <br>
+        {% endfor %}
+</ul>
+
+</body>
+</html>

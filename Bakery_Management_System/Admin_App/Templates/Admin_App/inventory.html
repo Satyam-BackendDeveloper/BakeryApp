@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management</title>
+</head>
+<body>
+        <h1> Inventories For Quantity of Ingredients</h1>
+        <br>
+        <h3> Quantity of Ingredients left </h3>
+        {% for key, values in inventory.items %}
+            <div> {{key}} : {{values}} </div>
+        {% endfor %}
+
+</body>
+</html>
+

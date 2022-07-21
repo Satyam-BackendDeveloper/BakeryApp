@@ -1,0 +1,50 @@
+from django.db import models
+
+# Create your models here.
+
+class Bakery_Item(models.Model):
+    quantity = models.IntegerField()
+    title = models.CharField(max_length=10)
+    profit = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.title}"
+
+
+class Ingredients(models.Model):
+    ingredients = models.CharField(max_length=25)
+    quantity = models.IntegerField()
+    bakery_item = models.ForeignKey(Bakery_Item, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Bakery Item : {self.bakery_item}, \n" \
+            f"Ingredient : {self.ingredients} \n" \
+               f" , Quantity : {self.quantity} \n" \
+
+
+class IngredientsInStock(models.Model):
+    ingredients = models.CharField(max_length=25)
+    quantity = models.IntegerField()
+    cost_price = models.IntegerField()
+
+    def __str__(self):
+        return f"Ingredient : {self.ingredients} \n" \
+               f" , Quantity : {self.quantity}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

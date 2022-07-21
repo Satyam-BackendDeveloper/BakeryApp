@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>See Order History</title>
+</head>
+<body>
+    <h3> Order History</h3>
+    {% for item in placed %}
+        Item Name : {{item.Item}}<br>
+        item Quantity : {{item.Quantity}}
+        <br><br>
+    {% endfor %}
+</body>
+</html>
