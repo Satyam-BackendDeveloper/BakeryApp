@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Admin_App.views import welcome, display_all_items, inventory, admin_Page,addItem, addIngredientsToBakeryItems, addIngredientsToStock
-from customer_App.views import signup, index, thanks, dashboard, loginViewFunction, view_all_items_function, place_an_order, get_bill, see_order_history
+from Admin_App.views import welcome, display_all_items, inventory, admin_Page,addItem,addIngredientsToStock, itemsRequiredForBakeryItem
+from customer_App.views import signup, index, thanks, dashboard, loginViewFunction, view_all_items_function, Cart, get_bill, see_order_history, sellingPrice
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,12 +29,13 @@ urlpatterns = [
     path('dashboard', dashboard),
     path('login', loginViewFunction),
     path('view_all_items', view_all_items_function),
-    path('place_an_order', place_an_order),
+    path('place_an_order', Cart),
     path('get_bill', get_bill),
     path('see_order_history', see_order_history),
-    path('satyam', admin_Page),
 
     path('addItem', addItem),
-    path('addIngredients', addIngredientsToBakeryItems),
+    # path('addIngredients', addIngredientsToBakeryItems),
+    path('addIngredients', itemsRequiredForBakeryItem),
     path('addIngredientsInStock', addIngredientsToStock),
+    path('satyam', sellingPrice),
 ]

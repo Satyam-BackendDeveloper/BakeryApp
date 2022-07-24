@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Bakery_Item(models.Model):
     quantity = models.IntegerField()
     title = models.CharField(max_length=10)
@@ -11,15 +12,16 @@ class Bakery_Item(models.Model):
         return f"{self.title}"
 
 
-class Ingredients(models.Model):
+class IngredientsRequiredForItem(models.Model):
     ingredients = models.CharField(max_length=25)
     quantity = models.IntegerField()
-    bakery_item = models.ForeignKey(Bakery_Item, on_delete=models.CASCADE)
+    bakery_item = models.CharField(max_length=25)
 
     def __str__(self):
         return f"Bakery Item : {self.bakery_item}, \n" \
             f"Ingredient : {self.ingredients} \n" \
                f" , Quantity : {self.quantity} \n" \
+
 
 
 class IngredientsInStock(models.Model):
@@ -29,7 +31,8 @@ class IngredientsInStock(models.Model):
 
     def __str__(self):
         return f"Ingredient : {self.ingredients} \n" \
-               f" , Quantity : {self.quantity}"
+               f" , Quantity : {self.quantity} \n" \
+                f" , Cost Price : {self.cost_price}"
 
 
 

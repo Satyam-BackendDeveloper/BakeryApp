@@ -1,15 +1,15 @@
-from .models import Bakery_Item, Ingredients, IngredientsInStock
-from django.forms import ModelForm
+from .models import Bakery_Item, IngredientsRequiredForItem, IngredientsInStock
+from django.forms import ModelForm, HiddenInput
 
 class BakeryItemForm(ModelForm):
     selling_price = 0
     class Meta:
-         model = Bakery_Item
-         fields = ['title', 'quantity', 'profit']
+        model = Bakery_Item
+        fields = ['title', 'quantity', 'profit']
 
 class IngredientsForm(ModelForm):
     class Meta:
-         model = Ingredients
+         model = IngredientsRequiredForItem
          fields = ['ingredients', 'quantity', 'bakery_item']
 
 

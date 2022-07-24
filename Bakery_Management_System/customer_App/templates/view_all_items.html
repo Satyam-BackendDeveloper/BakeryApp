@@ -8,7 +8,9 @@
     <h3> Here is the List of All Available Items </h3>
 
     {% for item in items %}
-    <h4> {{item}} </h4>
+    <h1> {{item.title}} </h1>
+    <h4> Available Quantity : {{item.quantity}} </h4>
+
     {% endfor %}
 
 

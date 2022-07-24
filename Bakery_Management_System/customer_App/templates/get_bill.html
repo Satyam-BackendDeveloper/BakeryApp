@@ -6,6 +6,11 @@
 </head>
 <body>
     <h3> Bill For Your Products </h3>
-    <h3> {{amount}}</h3>
+
+    {% for x,y in dict.items %}
+    {{x}} : {{y}}
+    {% endfor %}
+
+    <h5> Total Bill Amount : {{amount}}</h5>
 </body>
 </html>
