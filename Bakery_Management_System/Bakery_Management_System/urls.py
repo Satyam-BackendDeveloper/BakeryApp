@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Admin_App.views import welcome, display_all_items, inventory, admin_Page,addItem,addIngredientsToStock, itemsRequiredForBakeryItem
-from customer_App.views import signup, index, thanks, dashboard, loginViewFunction, view_all_items_function, Cart, get_bill, see_order_history, sellingPrice
+from customer_App.views import signup, index, thanks, dashboard, loginViewFunction, view_all_items_function, Cart, get_bill, see_order_history, sellingPrice, payment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,4 +38,6 @@ urlpatterns = [
     path('addIngredients', itemsRequiredForBakeryItem),
     path('addIngredientsInStock', addIngredientsToStock),
     path('satyam', sellingPrice),
+
+    path('payment', payment),
 ]

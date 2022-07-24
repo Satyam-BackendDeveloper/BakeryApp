@@ -23,7 +23,8 @@ from customer_App.views import sellingPrice
 
 
 def welcome(request):
-    #This function will display the home page of our WebApp
+    #This function will display the home page of our Adminapp
+    #Only admin have permission to access this
     # which contains all links to other functions of Bakery Admin
 
 

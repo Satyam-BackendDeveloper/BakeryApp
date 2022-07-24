@@ -8,9 +8,13 @@
     <h3> Bill For Your Products </h3>
 
     {% for x,y in dict.items %}
-    {{x}} : {{y}}
+    {{x}} : {{y}} <br>
     {% endfor %}
 
     <h5> Total Bill Amount : {{amount}}</h5>
+
+    <a href = "payment">
+    <input type= "button" value="Pay Now"> </a>
+
 </body>
 </html>
