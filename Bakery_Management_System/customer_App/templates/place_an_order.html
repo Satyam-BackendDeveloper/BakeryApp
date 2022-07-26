@@ -10,9 +10,8 @@
     <form method = 'POST'>
         {% csrf_token %}
         {{formset}}
-        <input type = Button onclick="place_an_order.html" value="Add More Items to Cart">
-
-        <input type = submit value="submit">
+        <input type = submit value="Add More Items to Cart">
+        <a href = "dashboard"> <input type = button value = Home page> </a>
     </form>
 </body>
 </html>

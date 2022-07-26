@@ -208,16 +208,3 @@ def addIngredientsToStock(request):
         form = IngredientsInStockForm()
 
     return render(request, 'Admin_App/addIngredientsInStock.html', {'form' : form.as_p})
-
-
-
-def updateQuantity():
-    ingredientsObjects = IngredientsRequiredForItem.objects.all()
-    ingredientsName = []
-    for x in ingredientsObjects:
-        ingredientsName.append(x.ingredients)
-
-    for x in ingredientsObjects:
-        if x.bakery_item is not None:
-            x.quantity = 0
-            x.save()
