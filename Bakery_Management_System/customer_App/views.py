@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 def index(request):
     #it's the Homepage of our webApp which contains signup and login links for our User
     # only user not admin can signup but admin also have functionality of login into the app
-    return render(request, 'index.html' )
+    return render(request, 'Index.html' )
 
 def signup(request):
     # it asks for username (unique), email, password, age, mobile Number and user data gets saved in database
