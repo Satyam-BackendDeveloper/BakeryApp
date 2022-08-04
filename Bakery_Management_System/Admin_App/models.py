@@ -3,9 +3,12 @@ from django.db import models
 # Create your models here.
 
 
+
+
+
 class Bakery_Item(models.Model):
     quantity = models.IntegerField()
-    title = models.CharField(max_length=10)
+    title = models.CharField(max_length=10, unique=True)
     profit = models.IntegerField(default=0)
 
     def __str__(self):
@@ -13,7 +16,7 @@ class Bakery_Item(models.Model):
 
 
 class IngredientsRequiredForItem(models.Model):
-    ingredients = models.CharField(max_length=25)
+    ingredients = models.CharField(max_length=25,)
     quantity = models.IntegerField()
     bakery_item = models.CharField(max_length=25)
 
@@ -25,7 +28,7 @@ class IngredientsRequiredForItem(models.Model):
 
 
 class IngredientsInStock(models.Model):
-    ingredients = models.CharField(max_length=25)
+    ingredients = models.CharField(max_length=25, unique=True)
     quantity = models.IntegerField()
     cost_price = models.IntegerField()
 
@@ -33,17 +36,6 @@ class IngredientsInStock(models.Model):
         return f"Ingredient : {self.ingredients} \n" \
                f" , Quantity : {self.quantity} \n" \
                 f" , Cost Price : {self.cost_price}"
-
-# class IngredientsRequiredForItem(models.Model):
-#     ingredients = models.ForeignKey(IngredientsInStock, on_delete=models.CASCADE)
-#     quantity = models.IntegerField()
-#     bakery_item = models.ForeignKey(Bakery_Item, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return f"Bakery Item : {self.bakery_item}, \n" \
-#             f"Ingredient : {self.ingredients} \n" \
-#                f" , Quantity : {self.quantity} \n" \
-
 
 
 

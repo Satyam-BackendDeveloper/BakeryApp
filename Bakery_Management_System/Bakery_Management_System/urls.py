@@ -15,29 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Admin_App.views import welcome, display_all_items, inventory, admin_Page,addItem,addIngredientsToStock, itemsRequiredForBakeryItem
-from customer_App.views import signup, index, thanks, dashboard, loginViewFunction, view_all_items_function, Cart, get_bill, see_order_history, sellingPrice, payment
+from Admin_App.views import inventoryAPI, AddIngredientsToStockAPI, AddBakeryItemAPI, AddIngredientsRequiredForBakeryItemAPI
+from customer_App.views import sellingPrice, PlaceAnOrderAPI, SignupAPI,LoginAPI, SeeOrderHistoryAPI, GetBillAPI
 
 urlpatterns = [
+    # path('getall/', AddIngredientsToStock.as_view()),
+    path('ingredients/<str:name>', AddIngredientsToStockAPI.as_view()),
+    path('bakeryitem/', AddBakeryItemAPI.as_view()),
+    path('ingredientsreq/', AddIngredientsRequiredForBakeryItemAPI.as_view()),
+    path('signup/', SignupAPI.as_view()),
+    path('cart/', PlaceAnOrderAPI.as_view()),
+    path('login/', LoginAPI.as_view()),
+    path('orderhistory/', SeeOrderHistoryAPI.as_view()),
+    path('getbill/', GetBillAPI.as_view()),
     path('admin/', admin.site.urls),
-    path('', index),
-    path('all_items', display_all_items),
-    path('inventory', inventory),
-    path('index', index ),
-    path('signup', signup),
-    path('thanks', thanks),
-    path('dashboard', dashboard),
-    path('login', loginViewFunction),
-    path('view_all_items', view_all_items_function),
-    path('place_an_order', Cart),
-    path('get_bill', get_bill),
-    path('see_order_history', see_order_history),
-
-    path('addItem', addItem),
-    # path('addIngredients', addIngredientsToBakeryItems),
-    path('addIngredients', itemsRequiredForBakeryItem),
-    path('addIngredientsInStock', addIngredientsToStock),
-    path('satyam', sellingPrice),
-
-    path('payment', payment),
+    path('inventory/', inventoryAPI.as_view()),
 ]
