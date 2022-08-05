@@ -2,13 +2,13 @@ version: '3'
 services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    image: test:latest
     volumes:
       - .:/BakeryApp DRF/
     entrypoint:
       - /bin/bash
       - -c
-      - python manage.py runserver 0.0.0.0:8000
+      - python3 manage.py runserver --insecure 0.0.0.0:8000
 
     environment:
       - POSTGRES_NAME=postgres
