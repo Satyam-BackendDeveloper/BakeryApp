@@ -20,7 +20,7 @@ from customer_App.views import sellingPrice, PlaceAnOrderAPI, SignupAPI,LoginAPI
 
 urlpatterns = [
     # path('getall/', AddIngredientsToStock.as_view()),
-    path('ingredients/<str:name>', AddIngredientsToStockAPI.as_view()),
+    path('ingredients/', AddIngredientsToStockAPI.as_view()),
     path('bakeryitem/', AddBakeryItemAPI.as_view()),
     path('ingredientsreq/', AddIngredientsRequiredForBakeryItemAPI.as_view()),
     path('signup/', SignupAPI.as_view()),

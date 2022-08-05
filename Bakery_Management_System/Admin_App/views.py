@@ -22,15 +22,15 @@ class AddIngredientsToStockAPI(APIView):
         except IngredientsInStock.DoesNotExist:
             raise Http404
 
-    # def get(self, request):
-    #     ingredients = IngredientsInStock.objects.all()
-    #     ingredients_serializer = AddIngredientsToStockSerializer(ingredients, many=True)
-    #     return Response(ingredients_serializer.data)
-
-    def get(self, request, name):
-        ingredients = self.get_object(name)
-        ingredients_serializer = AddIngredientsToStockSerializer(ingredients)
+    def get(self, request):
+        ingredients = IngredientsInStock.objects.all()
+        ingredients_serializer = AddIngredientsToStockSerializer(ingredients, many=True)
         return Response(ingredients_serializer.data)
+
+    # def get(self, request, name):
+    #     x = self.get_object(name)
+    #     serializer = AddIngredientsToStockSerializer(x)
+    #     return Response(serializer.data)
 
     def post(self, request):
         ingredients_serializer = AddIngredientsToStockSerializer(data=request.data)
@@ -87,19 +87,17 @@ class AddBakeryItemAPI(APIView):
         return Response(item_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request):
-        item_serializer = BakeryItemSerializer(data=request.data)
+        item = Bakery_Item.objects.get(title=request.data['title'])
+        if item is not None:
+            item.quantity = int(item.quantity) + int(request.data['quantity'])
 
-        if item_serializer.is_valid:
-                item = Bakery_Item.objects.get(title=request.data['title'])
-                if item is not None:
-                    item.quantity = int(item.quantity) + int(request.data['quantity'])
+            if int(item.profit) < int(request.data['profit']):
+                item.profit = request.data['profit']
+            item.save()
+            return Response({'Item Quantity' : 'updated'}, status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response({'item': 'not present'}, status=status.HTTP_404_NOT_FOUND)
 
-                    if int(item.profit) < int(request.data['profit']):
-                        item.profit = request.data['profit']
-                    item.save()
-                    return Response(item_serializer.data, status=status.HTTP_204_NO_CONTENT)
-                return Response({'item':'not present'}, status=status.HTTP_404_NOT_FOUND)
-        return Response({'serializer' : 'invalid'}, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, name):
         item = self.get_object(name)

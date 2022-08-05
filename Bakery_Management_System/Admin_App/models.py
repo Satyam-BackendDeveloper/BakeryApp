@@ -15,15 +15,15 @@ class Bakery_Item(models.Model):
         return f"{self.title}"
 
 
-class IngredientsRequiredForItem(models.Model):
-    ingredients = models.CharField(max_length=25,)
-    quantity = models.IntegerField()
-    bakery_item = models.CharField(max_length=25)
-
-    def __str__(self):
-        return f"Bakery Item : {self.bakery_item}, \n" \
-            f"Ingredient : {self.ingredients} \n" \
-               f" , Quantity : {self.quantity} \n" \
+# class IngredientsRequiredForItem(models.Model):
+#     ingredients = models.CharField(max_length=25,)
+#     quantity = models.IntegerField()
+#     bakery_item = models.CharField(max_length=25)
+#
+#     def __str__(self):
+#         return f"Bakery Item : {self.bakery_item}, \n" \
+#             f"Ingredient : {self.ingredients} \n" \
+#                f" , Quantity : {self.quantity} \n" \
 
 
 
@@ -37,7 +37,15 @@ class IngredientsInStock(models.Model):
                f" , Quantity : {self.quantity} \n" \
                 f" , Cost Price : {self.cost_price}"
 
+class IngredientsRequiredForItem(models.Model):
+    ingredients = models.ForeignKey(IngredientsInStock, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    bakery_item = models.ForeignKey(Bakery_Item, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"Bakery Item : {self.bakery_item}, \n" \
+            f"Ingredient : {self.ingredients} \n" \
+               f" , Quantity : {self.quantity} \n" \
 
 
 
